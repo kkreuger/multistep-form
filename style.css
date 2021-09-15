@@ -1,0 +1,43 @@
+.container {
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    height: 50vh;
+}
+
+.container > div {
+    padding: 120px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.container > div:nth-child(1) {
+    background-color: rgb(148,115,123);
+}
+
+.container > div:nth-child(2) {
+    background-color: rgb(148,125,123);
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.container > div:nth-child(3) {
+    background-color: rgb(148,135,123);
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.container > div:nth-child(4) {
+    background-color: rgb(148,145,123);
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.btn-group {
+    text-align: center;
+}
