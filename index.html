@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Multistep form</title>
 </head>
@@ -11,28 +14,148 @@
 <body>
 
     <main>
-        <div class="container">
-            <div data-number="0">
-                <h2>Stap 1</h2>
-                <input type="text">
+        <section class="multistep-form-wrapper">
+            <div class="count">
+                <div class="container">
+                    <div class="count-wrapper">
+                        <div class="number active" data-count="0">1</div>
+                        <div class="number" data-count="1">2</div>
+                        <div class="number" data-count="2">3</div>
+                        <div class="number" data-count="3">4</div>
+                        <div class="number" data-count="4">5</div>
+                        <div class="number" data-count="5">6</div>
+                    </div>
+                </div>
             </div>
-            <div data-number="1">
-                <h2>Stap 2</h2>
-                <input type="text">
+            <div class="container">
+                <div class="multistep-form">
+                    <div data-number="0">
+                        <h2>Staat de radiator onder een raamkozijn?</h2>
+                        
+                        <div class="underneath-window">
+                            <div onclick="handleQuestionOne(this)" class="card-no-image" data-underneath="Ja">Ja</div>
+                            <div onclick="handleQuestionOne(this)" class="card-no-image" data-underneath="Nee">Nee</div>
+                        </div>
+    
+                        <div class="btn-group">
+                            <button onclick="previous()">Ga terug</button>                            
+                        </div>
+                    </div>
+                    <div data-number="1">
+                        <h2>Hoe staat uw radiator ten opzichte van de muren?</h2>
+                        <p>We willen dit graag weten, zodat je straks je ombouw kunt bevestigen</p>
+                        <div class="radiator-position">
+                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Links">
+                                <div class=card-image></div>
+                                <div class="card-name">Links een muur</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Rechts">
+                                <div class=card-image></div>
+                                <div class="card-name">Rechts een muur</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Beide">
+                                <div class=card-image></div>
+                                <div class="card-name">Beide kanten een muur</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Geen">
+                                <div class=card-image></div>
+                                <div class="card-name">Geen muren</div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button onclick="previous()">Ga terug</button>
+                        </div>
+                    </div>
+                    <div data-number="2">
+                        <h2>Nu willen we graag je maten weten</h2>
+                        
+                        <div class="sizes">
+                            <div class="card">
+                                <div class=card-image></div>
+                                <div class="card-name">Diepte</div>
+                                <div class="size-input">
+                                    <input class="radiator-size" type="text" oninput="handleQuestionThreeDepth(this)">
+                                    <div>cm</div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class=card-image></div>
+                                <div class="card-name">Hoogte</div>
+                                <div class="size-input">
+                                    <input class="radiator-size" type="text" oninput="handleQuestionThreeHeight(this)">
+                                    <div>cm</div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class=card-image></div>
+                                <div class="card-name">Lengte</div>
+                                <div class="size-input">
+                                    <input class="radiator-size" type="text" oninput="handleQuestionThreeLenght(this)">
+                                    <div>cm</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button onclick="previous()">Ga terug</button>
+                            <button class="next-button" onclick="next()" disabled>Volgende pagina</button>
+                        </div>
+                    </div>
+                    <div data-number="3">
+                        <h2>Kies het soort radiator bekleding dat je wilt</h2>
+                        
+                        <div class="radiator-type">
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 1">
+                                <div class=card-image></div>
+                                <div class="card-name">Type 1</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 2">
+                                <div class=card-image></div>
+                                <div class="card-name">Type 2</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 3">
+                                <div class=card-image></div>
+                                <div class="card-name">Type 3</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 4">
+                                <div class=card-image></div>
+                                <div class="card-name">Type 4</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 4">
+                                <div class=card-image></div>
+                                <div class="card-name">Type 5</div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button onclick="previous()">Ga terug</button>
+                        </div>
+                    </div>
+                    <div data-number="4">
+                        <h2>Vul hier je contact gegevens in</h2>
+                        <p>Wij zullen contact met je opnemen</p>
+                        <div class="contact-wrapper">
+                            <div class="input-group">
+                                <label for="name">Je naam</label>
+                                <input type="text" id="name">
+                            </div>
+                            <div class="input-group">
+                                <label for="email">Je email</label>
+                                <input type="text" id="email">
+                            </div>
+                            <div class="input-group">
+                                <label for="phone">Je telefoonnummer</label>
+                                <input type="number" id="phone">
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button onclick="previous()">previous</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div data-number="2">
-                <h2>Stap 3</h2>
-                <input type="text">
-            </div>
-            <div data-number="3">
-                <h2>Stap 4</h2>
-                <input type="text">
-            </div>
-        </div>
-        <div class="btn-group">
-            <button id="previous">previous</button>
-            <button id="next">next</button>
-        </div>
+        </section>
     </main>
     
 <script src="main.js"></script>
