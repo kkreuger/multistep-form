@@ -45,6 +45,8 @@ input {
 .count-wrapper {
     display: flex;
     justify-content: space-between;
+    max-width: 480px;
+    margin: auto;
 }
 
 .count-wrapper > div {
@@ -268,6 +270,14 @@ input {
     border-radius: 3px;
 }
 
+.btn-group .previous-button {
+    background-color: rgba(0,0,0, .07);
+    color: #969CB1;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
 .btn-group .next-button:disabled {
     opacity: .5;
 }
@@ -301,6 +311,11 @@ input {
     p {
         font-size: 16px;
         margin-bottom: 30px;
+    }
+
+    .btn-group .next-button, .btn-group .previous-button {
+        font-size: 16px;
+        padding: 12px 30px;
     }
 
     .card-name {
@@ -342,5 +357,13 @@ input {
 
     .sizes .card-image {
         height: 260px;
+    }
+
+    .radiator-type > div {
+        width: calc(20% - 10px);
+    }
+
+    .radiator-type .card-image {
+        height: 160px;
     }
 }
