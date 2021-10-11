@@ -3,8 +3,8 @@ let answers = {
     raamkozijn: null,
     positie: null,
     diepte: null,
-    breedte: null,
     hoogte: null,
+    breedte: null,
     bekleding: null,
     naam: null,
     email: null,
@@ -14,6 +14,7 @@ let answers = {
 const next = () => {
     if(count === 4) return
     setForm('-100%', 0)
+    activeCountBtn()
     count++
     setCount()
     setTimeout(() => {
@@ -56,11 +57,37 @@ const checkSizes = () => {
     }
 }
 
+//ACTIVATE COUNT BUTTON
+const activeCountBtn = () => {
+    document.querySelector(`[data-count="${count}"]`).disabled = false
+    document.querySelector(`[data-count="${count + 1}"]`).disabled = false
+}
+
+//SET CORRECT SLIDE
+const setCorrectSlide = (el) => {
+    const slideNumber = el.getAttribute('data-count')
+
+    if(slideNumber == count) return
+
+    if(slideNumber < count) {
+        for (let i = count - 1; i >= slideNumber; i--) {
+            previous()
+        }
+    }
+
+    if(slideNumber > count) {
+        for (let i = count; i <= slideNumber - 1; i++) {
+            next()
+        }          
+    }
+}
+
 //HANDLE QUESTION 1
 const handleQuestionOne = (element) => {
     const el = document.querySelectorAll('.underneath-window > div')
     el.forEach((el) => el.classList.remove('active'))
     element.classList.add('active')
+    answers.raamkozijn = element.getAttribute('data-underneath')
     next()
 }
 
@@ -69,24 +96,25 @@ const handleQuestionTwo = (element) => {
     const el = document.querySelectorAll('.radiator-position > div')
     el.forEach((el) => el.classList.remove('active'))
     element.classList.add('active')
+    answers.positie = element.getAttribute('data-position')
     next()
 }
 
 //HANDLE QUESTION 3 DEPTH
 const handleQuestionThreeDepth = (element) => {
-    
+    answers.diepte = element.value
     checkSizes()
 }
 
 //HANDLE QUESTION 3 DEPTH
 const handleQuestionThreeHeight = (element) => {
-    
+    answers.hoogte = element.value
     checkSizes()
 }
 
 //HANDLE QUESTION 3 DEPTH
 const handleQuestionThreeLenght = (element) => {
-   
+    answers.breedte = element.value
     checkSizes()
 }
 
@@ -95,6 +123,7 @@ const handleQuestionFour = (element) => {
     const el = document.querySelectorAll('.radiator-type > div')
     el.forEach((el) => el.classList.remove('active'))
     element.classList.add('active')
+    answers.bekleding = element.getAttribute('data-type')
     next()
 }
 

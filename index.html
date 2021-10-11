@@ -18,12 +18,11 @@
             <div class="count">
                 <div class="container">
                     <div class="count-wrapper">
-                        <div class="number active" data-count="0">1</div>
-                        <div class="number" data-count="1">2</div>
-                        <div class="number" data-count="2">3</div>
-                        <div class="number" data-count="3">4</div>
-                        <div class="number" data-count="4">5</div>
-                        <div class="number" data-count="5">6</div>
+                        <button onclick="setCorrectSlide(this)" class="number active" data-count="0">1</button>
+                        <button onclick="setCorrectSlide(this)" class="number" data-count="1" disabled>2</button>
+                        <button onclick="setCorrectSlide(this)" class="number" data-count="2" disabled>3</button>
+                        <button onclick="setCorrectSlide(this)" class="number" data-count="3" disabled>4</button>
+                        <button onclick="setCorrectSlide(this)" class="number" data-count="4" disabled>5</button>
                     </div>
                 </div>
             </div>
@@ -41,19 +40,19 @@
                         <h2>Hoe staat uw radiator ten opzichte van de muren?</h2>
                         <p>We willen dit graag weten, zodat je straks je ombouw kunt bevestigen</p>
                         <div class="radiator-position">
-                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Links">
+                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Links een muur">
                                 <div class=card-image></div>
                                 <div class="card-name">Links een muur</div>
                             </div>
-                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Rechts">
+                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Rechts een muur">
                                 <div class=card-image></div>
                                 <div class="card-name">Rechts een muur</div>
                             </div>
-                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Beide">
+                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Beide kanten een muur">
                                 <div class=card-image></div>
                                 <div class="card-name">Beide kanten een muur</div>
                             </div>
-                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Geen">
+                            <div class="card" onclick="handleQuestionTwo(this)" data-position="Geen muren">
                                 <div class=card-image></div>
                                 <div class="card-name">Geen muren</div>
                             </div>

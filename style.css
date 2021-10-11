@@ -16,10 +16,6 @@ p {
     margin-bottom: 20px;
 }
 
-h1 {
-
-}
-
 h2 {
     text-align: center;
     margin-bottom: 10px;
@@ -49,11 +45,13 @@ input {
     margin: auto;
 }
 
-.count-wrapper > div {
-    width: calc((100% /6) - 5px);
+.count-wrapper > button {
+    width: calc((100% / 5) - 5px);
     background-color: rgba(0,0,0, .2);
     border-radius: 50%;
+    border: none;
     width: 25px;
+    cursor: pointer;
     height: 25px;
     color: white;
     font-weight: 700;
@@ -61,6 +59,10 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.count-wrapper > button:disabled {
+    cursor: not-allowed;
 }
 
 .count-wrapper .active {
@@ -365,5 +367,11 @@ input {
 
     .radiator-type .card-image {
         height: 160px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .multistep-form {
+        min-height: 100vh;
     }
 }
