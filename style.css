@@ -1,35 +1,35 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.ct-header {
+	display: none;	
 }
 
-html {
-    font-family: 'Roboto', sans-serif;
-    background-color: #FBFCFF;
+.multistep-form-wrapper h2, .multistep-form-wrapper p {
+	text-align: center;
+	font-family: "Barlow Semi Condensed", sans-serif;
+	font-weight: 800;
 }
 
-p {
-    color: #666E88;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 20px;
+.multistep-form-wrapper h2 {
+	color: #B0A894;	
+	margin-bottom: 10px;
+	line-height: 1.2;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #2B2F3D;
-    font-weight: 900;
+.no-bm {
+	margin-bottom: 0;
 }
 
-input {
+input, textarea {
     outline-color: #5096FF;
     outline-width: thin;
 }
 
+textarea {
+	border-width: 1px;
+	height: 120px;
+}
+
 .multistep-form-wrapper {
-    padding: 50px 0;
+    padding: 0;
 }
 
 .count {
@@ -43,6 +43,11 @@ input {
     justify-content: space-between;
     max-width: 480px;
     margin: auto;
+}
+
+button:hover {
+	transform: translateY(0) !important;
+	box-shadow: none !important;
 }
 
 .count-wrapper > button {
@@ -63,6 +68,7 @@ input {
 
 .count-wrapper > button:disabled {
     cursor: not-allowed;
+    pointer-events: auto !important;
 }
 
 .count-wrapper .active {
@@ -118,6 +124,11 @@ input {
     opacity: 0;
 }
 
+.multistep-form > div:nth-child(7) {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
 .btn-group {
     text-align: center;
     margin-top: 30px;
@@ -130,17 +141,34 @@ input {
     font-weight: 700;
 }
 
-.underneath-window {
+.underneath-window, .sending {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.underneath-window2 {
+	background-color: white;
+    position: absolute;
+    width: 100%;
+    top: auto;
+    z-index: 0;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+.underneath-window2.active {
+	top: 0;
+	opacity: 1;
+	z-index: 1;
+}
+
 .card-no-image {
-    background-color: rgba(78, 92, 144, .03);
-    border: 1px solid rgba(132, 144, 188, .25);
+    background-color: #fdfcfb;
+    border: 1px solid #ebe5dd;
     padding: 20px;
     color: #969CB1;
+    cursor: pointer;
     font-weight: 700;
     text-align: center;
     font-size: 14px;
@@ -149,50 +177,63 @@ input {
 }
 
 .card-no-image.active {
-    border: 1px solid #5096FF;
-    color: #2B2F3D;
+    border: 1px solid #B0A894;
+    color: #B0A894;
+    background-color: #f3eddf;
 }
 
-.radiator-position, .radiator-type {
+.radiator-position, .radiator-type, .windowsill, .underneath-window-size {
     display: flex;
     justify-content: space-between;
-    gap: 15px;
+    gap: 10px;
     flex-wrap: wrap;
+}
+
+.windowsill, .underneath-window-size {
+	justify-content: center;
 }
 
 .sizes {
     display: flex;
     justify-content: space-between;
-    gap: 15px;
+    gap: 10px;
     flex-wrap: wrap; 
 }
 
+.sizes .card:hover {
+	cursor: default;
+}
+
 .card {
-    width: 160px;
-    border: 1px solid #DCDFEB;
+    width: calc(50% - 5px);
+    border: 1px solid #ebe5dd;
     border-radius: 5px;
     overflow: hidden;
 }
 
+.card:hover {
+	cursor: pointer;
+}
+
 .card.active {
-    border: 1px solid #5096FF;
+    border: 1px solid #B0A894;
 }
 
 .card.active .card-name {
-    background-color: #5096FF;
+    background-color: #B0A894;
     color: white;
 }
 
-.sizes > div {
-    width: 160px;
-    border: 1px solid #DCDFEB;
+.sizes > div, .underneath-window-size > div, .sending > div  {
+    width: calc(50% - 10px);
+    border: 1px solid #ebe5dd;
     border-radius: 5px;
     overflow: hidden;
 }
 
 .card-image {
     background: url(./img/radiator3.png) no-repeat;
-    width: 160px;
+    width: 100%;
     height: 160px;
     background-size: cover;
     background-position: center;
@@ -204,24 +245,31 @@ input {
     text-align: center;
     font-size: 14px;
     padding: 10px 0;
-    background-color: #F5F7FB;
+    background-color: #f7f5f0;
+    height: 100%;
 }
 
-.sizes .card-name {
+.sizes .card-name, .underneath-window-size .card-name {
     padding: 15px 0 10px;
 }
 
 .size-input {
     display: flex;
     padding: 0 20px 15px;
-    background-color: #F5F7FB;
+    background-color: #f7f5f0;
 }
 
 .size-input > input {
     width: 80%;
-    padding: 6px 10px;
+    padding: 4px 10px;
     border: 1px solid #DCDFEB;
     border-radius: 0;
+    background-color: white;
+    height: auto;
+}
+
+.size-input > input:focus {
+	background-color: white;
 }
 
 .size-input > div {
@@ -236,9 +284,100 @@ input {
     justify-content: center;
 }
 
-.sizes .card-name {
+.sizes .card-name, .underneath-window-size .card-name {
     text-align: left;
     padding-left: 20px;
+    height: auto;
+}
+
+.radiator-position .wall1 {
+	background: url(./img/muur-links.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.radiator-position .wall2 {
+	background: url(./img/muur-rechts.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.radiator-position .wall3 {
+	background: url(./img/muur-links-rechts.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.radiator-position .wall4 {
+	background: url(./img/muur-geen.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.radiator-type .type1 {
+	background: url(./img/typeA.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.radiator-type .type2 {
+	background: url(./img/typeB.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.radiator-type .type3 {
+	background: url(./img/typeC.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.radiator-type .type4 {
+	background: url(./img/typeD.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.radiator-type .type5 {
+	background: url(./img/typeE.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.sizes .depth {
+	background: url(./img/diepte.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.sizes .height {
+	background: url(./img/hoogte.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.sizes .width {
+	background: url(./img/breedte.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.windowsill .windowsill1 {
+	background: url(./img/mdf.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.windowsill .windowsill2 {
+	background: url(./img/eiken.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
+}
+
+.underneath-window-size .wall-to-window {
+	background: url(./img/muur-tot-kozijn.jpg) no-repeat;
+	background-size: cover;
+    background-position: center;
 }
 
 .contact-wrapper {
@@ -264,12 +403,13 @@ input {
     margin-bottom: 10px;
 }
 
-.btn-group .next-button {
-    background-color: #D0E2FF;
-    color: #5096FF;
+.btn-group .next-button, .btn-group .next-button-window {
+    background-color: #7D5D17;
+    color: white;
     padding: 8px 15px;
     margin-left: 10px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .btn-group .previous-button {
@@ -280,8 +420,76 @@ input {
     border-radius: 3px;
 }
 
-.btn-group .next-button:disabled {
-    opacity: .5;
+.btn-group .next-button:disabled, .btn-group .next-button-window:disabled {
+    opacity: .1;
+    cursor: not-allowed;
+	pointer-events: all !important;
+}
+
+.overview-wrapper table {
+	background-color: #fbf8f2;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+.overview-wrapper table td {
+	padding: 5px 10px;
+	font-size: 12px;
+}
+
+.overview-wrapper table .price {
+	font-weight: 800;
+}
+
+.additional-info {
+	display: none;
+}
+
+.additional-info.active {
+	display: block;
+}
+
+.spinner {
+	animation: spin 1s linear infinite;
+	margin-right: 10px;
+	height: 20px;
+	width: 20px;
+	display: none;
+}
+
+.spinner.active {
+	display: block;
+}
+
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
+.alert {
+	color: green;
+	background-color: #a1fbde;
+	padding: 10px 0;
+	text-align: center;
+	position: fixed;
+	bottom: 30px;
+	width: calc(100% - 20px);
+	max-width: 60px;
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	display: none;
+	margin: 20px auto 0;
+	z-index: 10;
+	border-radius: 5px;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
+.alert.active {
+	display: block;
 }
 
 @media (min-width: 576px) {
@@ -299,6 +507,11 @@ input {
         width: 100%;
         height: 160px;
     }
+    
+    .sizes .card-image, .underneath-window-size .card-image {
+	    width: 100%;
+        height: 220px;
+    }
 
     .radiator-position, .radiator-type {
         justify-content: start;
@@ -315,7 +528,7 @@ input {
         margin-bottom: 30px;
     }
 
-    .btn-group .next-button, .btn-group .previous-button {
+    .btn-group .next-button, .btn-group .previous-button, .btn-group .next-button-window {
         font-size: 16px;
         padding: 12px 30px;
     }
@@ -328,7 +541,7 @@ input {
         height: 210px;
     }
 
-    .sizes > div {
+    .sizes > div, .underneath-window-size > div {
         width: calc((100% / 3) - 10px);
     }
 
@@ -338,8 +551,12 @@ input {
         font-size: 14px;
     }
 
-    .underneath-window, .sizes, .radiator-type, .radiator-position {
+    .underneath-window, .sizes, .radiator-type, .radiator-position, .windowsill {
         margin-top: 30px;
+    }
+    
+    .overview-wrapper table td {
+	    font-size: 14px;
     }
 }
 
@@ -356,22 +573,31 @@ input {
     .radiator-position, .radiator-type {
         gap: 10px;
     }
+    
+    .card-image {
+	    height: 180px;
+    }
 
-    .sizes .card-image {
+    .sizes .card-image, .underneath-window-size .card-image {
         height: 260px;
     }
 
     .radiator-type > div {
-        width: calc(20% - 10px);
+        width: calc(25% - 10px);
     }
 
     .radiator-type .card-image {
-        height: 160px;
+        height: 190px;
+    }
+    
+    .overview-wrapper table {
+	    width: 80%;
+	    margin: 0 auto 30px;
     }
 }
 
 @media (min-width: 1200px) {
     .multistep-form {
-        min-height: 100vh;
+        min-height: 170vh;
     }
 }

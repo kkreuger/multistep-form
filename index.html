@@ -23,38 +23,63 @@
                         <button onclick="setCorrectSlide(this)" class="number" data-count="2" disabled>3</button>
                         <button onclick="setCorrectSlide(this)" class="number" data-count="3" disabled>4</button>
                         <button onclick="setCorrectSlide(this)" class="number" data-count="4" disabled>5</button>
+                        <button onclick="setCorrectSlide(this)" class="number" data-count="5" disabled>6</button>
+                        <button onclick="setCorrectSlide(this)" class="number" data-count="6" disabled>7</button>
                     </div>
                 </div>
             </div>
             <div class="container">
+	            <div class="alert">Je aanvraag is verstuurd, we zullen contact met je opnemen.</div>
                 <div class="multistep-form">
-                    <div data-number="0">
-                        <h2>Staat de radiator onder een raamkozijn?</h2>
-                        
-                        <div class="underneath-window">
-                            <div onclick="handleQuestionOne(this)" class="card-no-image" data-underneath="Ja">Ja</div>
-                            <div onclick="handleQuestionOne(this)" class="card-no-image" data-underneath="Nee">Nee</div>
-                        </div>
-                    </div>
-                    <div data-number="1">
-                        <h2>Hoe staat uw radiator ten opzichte van de muren?</h2>
-                        <p>We willen dit graag weten, zodat je straks je ombouw kunt bevestigen</p>
+	                <div data-number="0">
+                        <h2>Hoe staat je radiator ten opzichte van de muren?</h2>
+                        <p>Kies de situatie die in de ruimte waar de ombouw komt te staan van toepassing is. Denk hierbij aan de verhouding met eventuele muren waar de radiator ombouw contact mee maakt of een kozijn of vensterbank waar de ombouw tegenaan komt te staan.</p>
                         <div class="radiator-position">
                             <div class="card" onclick="handleQuestionTwo(this)" data-position="Links een muur">
-                                <div class="card-image"></div>
+                                <div class="card-image wall1"></div>
                                 <div class="card-name">Links een muur</div>
                             </div>
                             <div class="card" onclick="handleQuestionTwo(this)" data-position="Rechts een muur">
-                                <div class="card-image"></div>
+                                <div class="card-image wall2"></div>
                                 <div class="card-name">Rechts een muur</div>
                             </div>
                             <div class="card" onclick="handleQuestionTwo(this)" data-position="Beide kanten een muur">
-                                <div class="card-image"></div>
+                                <div class="card-image wall3"></div>
                                 <div class="card-name">Beide kanten een muur</div>
                             </div>
                             <div class="card" onclick="handleQuestionTwo(this)" data-position="Geen muren">
-                                <div class="card-image"></div>
+                                <div class="card-image wall4"></div>
                                 <div class="card-name">Geen muren</div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="previous-button" onclick="previous()">Ga terug</button>
+                        </div>
+                    </div>
+                     <div data-number="1">
+                        <h2>Kies het soort ombouw dat je wilt</h2>
+                        <p>Er is keuze uit vier verschillende vlakvullingen voor de radiator ombouw. Kies hier de gewenste vulling.</p>
+                        <div class="radiator-type">
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type A">
+                                <div class="card-image type1"></div>
+                                <div class="card-name">Type A</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type B">
+                                <div class="card-image type2"></div>
+                                <div class="card-name">Type B</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type C">
+                                <div class="card-image type3"></div>
+                                <div class="card-name">Type C</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type D">
+                                <div class="card-image type4"></div>
+                                <div class="card-name">Type D</div>
+                            </div>
+                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type E">
+                                <div class="card-image type5"></div>
+                                <div class="card-name">Type E</div>
                             </div>
                         </div>
 
@@ -64,29 +89,31 @@
                     </div>
                     <div data-number="2">
                         <h2>Nu willen we graag je maten weten</h2>
-                        
+                        <p class="no-bm">DIEPTE: Is de totale diepte van de radiator vanaf de muur tot de voorkant.</p>
+                        <p class="no-bm">HOOGTE: Dit is de totale hoogte van de radiator gemeten vanaf de grond.</p>
+                        <p>BREEDTE: Dit is de totale breedte van de radiator inclusief knoppen en leidingen. <br>Let op! max 300 cm, indien u een bredere radiator ombouw wilt reken wij een meerprijs</p>
                         <div class="sizes">
                             <div class="card">
-                                <div class="card-image"></div>
+                                <div class="card-image depth"></div>
                                 <div class="card-name">Diepte</div>
                                 <div class="size-input">
-                                    <input class="radiator-size" type="text" oninput="handleQuestionThreeDepth(this)">
+                                    <input class="radiator-size" type="number" oninput="handleQuestionThreeDepth(this)">
                                     <div>cm</div>
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="card-image"></div>
+                                <div class="card-image height"></div>
                                 <div class="card-name">Hoogte</div>
                                 <div class="size-input">
-                                    <input class="radiator-size" type="text" oninput="handleQuestionThreeHeight(this)">
+                                    <input class="radiator-size" type="number" oninput="handleQuestionThreeHeight(this)">
                                     <div>cm</div>
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="card-image"></div>
-                                <div class="card-name">Lengte</div>
+                                <div class="card-image width"></div>
+                                <div class="card-name">Breedte (60cm - 300cm)</div>
                                 <div class="size-input">
-                                    <input class="radiator-size" type="text" oninput="handleQuestionThreeLenght(this)">
+                                    <input class="radiator-size" type="number" oninput="handleQuestionThreeWidth(this)">
                                     <div>cm</div>
                                 </div>
                             </div>
@@ -98,55 +125,156 @@
                         </div>
                     </div>
                     <div data-number="3">
-                        <h2>Kies het soort radiator ombouw dat je wilt</h2>
-                        
-                        <div class="radiator-type">
-                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 1">
-                                <div class="card-image"></div>
-                                <div class="card-name">Type 1</div>
+	                    <h2>Wil je een passende vensterbank?</h2>
+	                    <p>Geef aan of een vensterbank gewenst is. De standaard dikte van het blad is 22 mm.</p>
+	                    <div class="windowsill">
+		                    <div class="card" onclick="handleQuestionFive(this)" data-windowsill="MDF">
+                                <div class="card-image windowsill1"></div>
+                                <div class="card-name">22mm MDF blad</div>
                             </div>
-                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 2">
-                                <div class="card-image"></div>
-                                <div class="card-name">Type 2</div>
-                            </div>
-                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 3">
-                                <div class="card-image"></div>
-                                <div class="card-name">Type 3</div>
-                            </div>
-                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 4">
-                                <div class="card-image"></div>
-                                <div class="card-name">Type 4</div>
-                            </div>
-                            <div class="card" onclick="handleQuestionFour(this)" data-type="Type 4">
-                                <div class="card-image"></div>
-                                <div class="card-name">Type 5</div>
+                            <div class="card" onclick="handleQuestionFive(this)" data-windowsill="Eiken">
+                                <div class="card-image windowsill2"></div>
+                                <div class="card-name">36mm Eiken blad</div>
                             </div>
                         </div>
-
                         <div class="btn-group">
                             <button class="previous-button" onclick="previous()">Ga terug</button>
                         </div>
-                    </div>
+                    </div> 
                     <div data-number="4">
-                        <h2>Vul hier je contact gegevens in</h2>
-                        <p>Wij zullen contact met je opnemen</p>
-                        <div class="contact-wrapper">
-                            <div class="input-group">
-                                <label for="name">Je naam</label>
-                                <input type="text" id="name">
-                            </div>
-                            <div class="input-group">
-                                <label for="email">Je email</label>
-                                <input type="text" id="email">
-                            </div>
-                            <div class="input-group">
-                                <label for="phone">Je telefoonnummer</label>
-                                <input type="number" id="phone">
-                            </div>
+                        <h2>Staat de radiator onder een raamkozijn?</h2>
+                        <p>Dit moeten we weten om de ombouw passend te maken.</p>
+                        <div class="underneath-window">
+                            <div onclick="handleQuestionOne(this)" class="card-no-image" data-underneath="Ja">Ja</div>
+                            <div onclick="handleQuestionOne(this)" class="card-no-image" data-underneath="Nee">Nee</div>
+                        </div>
+                        <div class="underneath-window2">
+	                        <h2>Geef hier de maat op vanaf de voorkant van je radiator tot aan het kozijn</h2>
+	                         <div class="underneath-window-size">
+		                        <div class="card">
+	                                <div class="card-image wall-to-window"></div>
+	                                <div class="card-name">Van radiator tot kozijn</div>
+	                                <div class="size-input">
+	                                    <input class="radiator-size" type="text" oninput="handleQuestionOneSize(this)">
+	                                    <div>cm</div>
+	                                </div>
+	                            </div>
+	                        </div>
+		                        <div class="btn-group">
+	                            <button class="previous-button" onclick="previous()">Ga terug</button>
+	                            <button class="next-button-window" onclick="next()" disabled>Volgende pagina</button>
+	                        </div>
                         </div>
                         <div class="btn-group">
                             <button class="previous-button" onclick="previous()">Ga terug</button>
                         </div>
+                    </div> 
+                    <div data-number="5">
+                        <h2>Wil je de ombouw laten versturen?</h2>
+                        <p>Let op! hier komen extra kosten bij.</p>
+                        <div class="sending">
+                            <div onclick="handleQuestionSix(this)" class="card-no-image" data-sending="Ja">Ja</div>
+                            <div onclick="handleQuestionSix(this)" class="card-no-image" data-sending="Nee">Nee</div>
+                        </div>
+                        <div class="btn-group">
+                            <button class="previous-button" onclick="previous()">Ga terug</button>
+                        </div>
+                    </div> 
+                    <div data-number="6">
+	                    <div class="overview-wrapper">
+		                    <h2>Controleer je keuzes</h2>
+		                    <table>
+			                    <tr>
+				                    <td style="width:50%">Onder raamkozijn</td>
+				                    <td class="underneath-window-choice">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%">Positie muren</td>
+				                    <td class="wall-choice">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%">Diepte</td>
+				                    <td class="dept-choice">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%">Hoogte</td>
+				                    <td class="height-choice">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%">Breedte</td>
+				                    <td class="width-choice">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%">Type ombouw</td>
+				                    <td class="type-choice">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%">Met vensterbank</td>
+				                    <td class="windowsill-choice">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%">Maat muur tot vensterbank</td>
+				                    <td class="windowsill-size">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%">Laten versturen</td>
+				                    <td class="sending-choice">-</td>
+			                    </tr>
+			                    <tr>
+				                    <td style="width:50%;font-weight:800;">Totaalprijs</td>
+				                    <td class="total-price">-</td>
+			                    </tr>
+		                    </table>
+	                    </div>
+                        <h2>Vul hier je contact gegevens in</h2>
+                        <form onsubmit="submitMail(event)">
+	                        <div class="contact-wrapper">
+	                            <div class="input-group">
+	                                <label for="name">Je naam</label>
+	                                <input oninput="handleName(this)" type="text" id="name" required>
+	                            </div>
+	                            <div class="input-group">
+	                                <label for="email">Je email</label>
+	                                <input oninput="handleEmail(this)" type="email" id="email" required>
+	                            </div>
+	                            <div class="input-group">
+	                                <label for="phone">Je telefoonnummer</label>
+	                                <input oninput="handlePhone(this)" type="number" id="phone" required>
+	                            </div>
+	                            
+	                            <div class="additional-info">
+		                            <div class="street">
+			                            <div class="input-group">
+			                                <label for="streetname">Straatnaam</label>
+			                                <input oninput="handleStreet(this)" type="text" id="streetname" required>
+			                            </div>
+			                            <div class="input-group">
+			                                <label for="streetnumber">Huisnummer</label>
+			                                <input oninput="handleStreetNumber(this)" type="text" id="streetnumber" required>
+			                            </div>
+		                            </div>
+		                            <div class="street">
+			                            <div class="input-group">
+			                                <label for="postal">Postcode</label>
+			                                <input oninput="handlePostal(this)" type="text" id="postal" required>
+			                            </div>
+			                            <div class="input-group">
+			                                <label for="city">Woonplaats</label>
+			                                <input oninput="handleCity(this)" type="text" id="city" required>
+			                            </div>
+		                            </div>
+	                            </div>
+	                            
+	                            <div class="input-group">
+	                                <label for="extra-info">Extra opmerkingen / vragen</label>
+	                                <textarea oninput="handleExtraInfo(this)" type="text" id="extra-info" rows="4"></textarea>
+	                            </div>
+	                        </div>
+	                        <div class="btn-group">
+	                            <button class="previous-button" onclick="previous()">Ga terug</button>
+	                            <button type="submit" class="next-button"><img class="spinner" src="<?php bloginfo('template_directory'); ?>/tool_assets/img/spinner.svg">Verstuur</button>
+	                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
